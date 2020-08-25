@@ -17,14 +17,18 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
+    # @feed = Feed.new(feed_params)
+    # @feed.user_id = current_user.id
   end
 
   def edit
   end
 
   def create
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
+    # @feed = Feed.new(feed_params)
+    # @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
         format.html { redirect_to feeds_path, notice: 'Feed was successfully created.' }
