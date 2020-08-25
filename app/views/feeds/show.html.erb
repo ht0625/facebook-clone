@@ -9,6 +9,8 @@
   <strong>Content:</strong>
   <%= @feed.content %>
 </p>
-
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
+<% if current_user.id == @feed[:user_id] %>
+<%= link_to 'Edit', edit_feed_path(@feed) %>
+<%= link_to 'Destroy', feed_path(@feed) , method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

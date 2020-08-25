@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+  def ensure_correct_user
+    if current_user.id !=  @feed.user_id
+      redirect_to feeds_path,notice: 'アクセスできません'
+    end
+  end
 end
