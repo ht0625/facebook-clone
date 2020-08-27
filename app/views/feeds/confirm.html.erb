@@ -5,11 +5,11 @@
     <%= form.hidden_field :image_cache %>
     <%= form.hidden_field :content %>
     <p>本文:<%= @feed.content %></p>
-    <%= form.submit "投稿する" %>
+    <%= form.submit('投稿する',class: 'btn btn-primary') %><br>
   <% end %>
   <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
     <%= form.hidden_field :image_cache %>
-    <%= form.hidden_field :content %>
-    <%= form.submit "戻る", name: "back" %>
+    <%= form.hidden_field :content %><br>
+    <%= form.submit('戻る',class: 'btn btn-primary', name: "back") %>
   <% end %>
 </div>
