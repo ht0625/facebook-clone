@@ -3,7 +3,7 @@ class FeedsController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
-    @feeds = Feed.all
+    @feeds = Feed.all.order(created_at: :desc)
   end
 
   def show
@@ -19,8 +19,6 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = current_user.feeds.build(feed_params)
-    # @feed = Feed.new(feed_params)
-    # @feed.user_id = current_user.id
   end
 
   def edit
@@ -28,11 +26,9 @@ class FeedsController < ApplicationController
 
   def create
     @feed = current_user.feeds.build(feed_params)
-    # @feed = Feed.new(feed_params)
-    # @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to feeds_path, notice: 'Feed was successfully created.' }
+        format.html { redirect_to feeds_path, notice: '投稿しました' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -44,7 +40,7 @@ class FeedsController < ApplicationController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to feeds_path, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to feeds_path, notice: '更新しました' }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
@@ -56,7 +52,7 @@ class FeedsController < ApplicationController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to feeds_url, notice: '削除しました' }
       format.json { head :no_content }
     end
   end

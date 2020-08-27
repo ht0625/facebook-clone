@@ -1,16 +1,17 @@
 <p id="notice"><%= notice %></p>
+<div class="view">
+  <p>
+    <strong>Image:</strong><br>
+    <%= image_tag @feed.image.url %>
+  </p><br>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @feed.image.url %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @feed.content %>
-</p>
-<%= link_to 'Back', feeds_path %>
-<% if current_user.id == @feed[:user_id] %>
-<%= link_to 'Edit', edit_feed_path(@feed) %>
-<%= link_to 'Destroy', feed_path(@feed) , method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+  <p>
+    <strong>Content:</strong><br>
+    <%= @feed.content %>
+  </p><br>
+  <%= link_to 'Back', feeds_path ,class: 'btn btn-primary' %>
+  <% if current_user.id == @feed[:user_id] %>
+  <%= link_to 'Edit', edit_feed_path(@feed),class: 'btn btn-primary'  %>
+  <%= link_to 'Destroy', feed_path(@feed) , method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-primary' %>
+  <% end %>
+</div>

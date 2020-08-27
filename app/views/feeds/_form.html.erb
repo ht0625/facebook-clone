@@ -19,11 +19,13 @@
   </div>
 
   <div class="field">
+    <br>
     <%= form.label :content %>
+    <br>
     <%= form.text_area :content %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit('投稿',class: 'btn btn-primary') %>
   </div>
 <% end %>

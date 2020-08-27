@@ -1,5 +1,6 @@
-<h1>New Feed</h1>
-
-<%= render 'form', feed: @feed %>
-
-<%= link_to 'Back', feeds_path %>
+<h1>新規投稿</h1>
+<div class="view">
+  <%= render 'form', feed: @feed %>
+<br>
+  <%= link_to 'Back', feeds_path,class: 'btn btn-primary'  %>
+</div>
